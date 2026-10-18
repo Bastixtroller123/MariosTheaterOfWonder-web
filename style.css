@@ -3,12 +3,9 @@ html, body {
   margin: 0;
 }
 
+/* Fondo: patrón que se repite */
 body {
-  font-family: Georgia, "Times New Roman", serif;
-  color: #fbeed2;
-  /* Rojo de telón con el centro más claro, como un foco de escenario */
-  background: radial-gradient(ellipse at center, #b3141b 0%, #8a0d13 60%, #5c070b 100%);
-  background-attachment: fixed;
+  background: url("content/background.gif") repeat;
 }
 
 main {
@@ -16,36 +13,16 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5rem 1rem 2rem;
+  padding: 4rem 1rem 1rem;
   box-sizing: border-box;
 }
 
-/* Marco dorado doble, como un cartel de teatro */
-.marco {
-  text-align: center;
-  padding: 3rem 4rem;
-  border: 3px double #e3b95a;
-  outline: 1px solid #e3b95a;
-  outline-offset: 8px;
-  background: rgba(60, 4, 7, 0.35);
+.logo {
+  max-width: 100%;
+  height: auto;
 }
 
-h1 {
-  margin: 0 0 1rem;
-  font-size: 3rem;
-  line-height: 1.2;
-  font-weight: bold;
-  color: #f5d98a;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-p {
-  margin: 0;
-  font-size: 1.25rem;
-  font-style: italic;
-}
-
-/* Botón de YouTube en la esquina superior derecha */
+/* Botón de YouTube, esquina superior derecha */
 .youtube {
   position: fixed;
   top: 1rem;
@@ -53,28 +30,15 @@ p {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  padding: 0.4rem 0.8rem;
   background: #fff;
-  color: #222;
+  color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 1rem;
   text-decoration: none;
-  border: 2px solid #e3b95a;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  border: 2px solid #000;
 }
 
 .youtube:hover {
-  background: #f5d98a;
-}
-
-.youtube:focus-visible {
-  outline: 3px solid #fff;
-  outline-offset: 3px;
-}
-
-@media (max-width: 600px) {
-  .marco { padding: 2rem 1.5rem; }
-  h1 { font-size: 2.1rem; }
+  background: #ddd;
 }
