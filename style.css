@@ -1,39 +1,74 @@
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-/* Fondo: patrón que se repite */
 body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  /* Pattern background. Its size is set in script.js (same scale as the logo) */
   background: url("content/background.gif") repeat;
+  image-rendering: pixelated;
 }
 
-main {
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 1rem 1rem;
-  box-sizing: border-box;
+/* Top bar: dark gradient so the logo stands out */
+header {
+  padding: 4.5rem 1rem 3rem;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 15, 0.65), rgba(0, 0, 15, 0));
 }
 
 .logo {
   max-width: 100%;
   height: auto;
+  image-rendering: pixelated;
 }
 
-/* Botón de YouTube, esquina superior derecha */
+/* Devlogs */
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem 1rem 4rem;
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+}
+
+.post {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: rgba(5, 8, 40, 0.85);
+  border: 2px solid #6d7bd6;
+}
+
+.post h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+}
+
+.post time {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: #a9b3f0;
+}
+
+.post p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* YouTube button, top right corner */
 .youtube {
   position: fixed;
   top: 1rem;
   right: 1rem;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.8rem;
   background: #fff;
   color: #000;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-decoration: none;
   border: 2px solid #000;
