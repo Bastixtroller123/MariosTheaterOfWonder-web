@@ -4,45 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mario’s Theater Of Wonder</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="icon" type="image/png" href="content/websiteICON.png?v=5">
 </head>
 <body>
-
-  <!-- YouTube button: change the href to your link -->
-  <a class="youtube" href="https://www.youtube.com/@xaggy726" target="_blank" rel="noopener">
-    <svg viewBox="0 0 28 20" width="28" height="20" aria-hidden="true">
-      <rect width="28" height="20" rx="5" fill="#ff0000"></rect>
-      <path d="M11 5.5v9l8-4.5z" fill="#fff"></path>
-    </svg>
-    <span>xag’s channel lmao</span>
-  </a>
 
   <header>
     <img class="logo" src="content/mtow_logo.png" alt="Mario’s Theater Of Wonder">
   </header>
 
-  <main>
-    <h2>Devlogs</h2>
+  <!-- Barra superior -->
+  <nav class="topnav" id="topnav" aria-label="Main">
+    <div class="topnav-inner">
+      <a class="tab" href="#home" data-page="home">Home</a>
+      <a class="tab" href="#downloads" data-page="downloads">Downloads</a>
+      <a class="tab" href="#credits" data-page="credits">Credits</a>
+      <a class="tab" href="#devlogs" data-page="devlogs">Devlogs</a>
 
-    <article class="post">
-      <h3>Devlog #1: Placeholder title</h3>
-      <time>Month 00, 0000</time>
-      <p>Placeholder text. Write what you worked on, what changed and what comes next.</p>
-    </article>
+      <!-- YouTube button -->
+      <a class="youtube" href="https://www.youtube.com/@xaggy726" target="_blank" rel="noopener">
+        <svg viewBox="0 0 28 20" width="28" height="20" aria-hidden="true">
+          <rect width="28" height="20" rx="5" fill="#ff0000"></rect>
+          <path d="M11 5.5v9l8-4.5z" fill="#fff"></path>
+        </svg>
+        <span>xag’s channel</span>
+      </a>
+    </div>
+  </nav>
 
-    <article class="post">
-      <h3>Devlog #2: Placeholder title</h3>
-      <time>Month 00, 0000</time>
-      <p>Placeholder text. Write what you worked on, what changed and what comes next.</p>
-    </article>
+  <main class="page">
+    <section class="page-section" id="sec-home" data-page="home"></section>
 
-    <article class="post">
-      <h3>Devlog #3: Placeholder title</h3>
-      <time>Month 00, 0000</time>
-      <p>Placeholder text. Write what you worked on, what changed and what comes next.</p>
-    </article>
+    <section class="page-section" id="sec-downloads" data-page="downloads" hidden></section>
+
+    <section class="page-section" id="sec-credits" data-page="credits" hidden></section>
+
+    <section class="page-section" id="sec-devlogs" data-page="devlogs" hidden>
+      <h2>Devlog Showcase</h2>
+      <!-- Filtros por autor -->
+      <div id="devlog-filters" class="devlog-filters"></div>
+      <div id="devlogs-container"></div>
+    </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="modinfo.js?v=5"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
