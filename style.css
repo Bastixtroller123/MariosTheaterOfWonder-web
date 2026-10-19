@@ -65,6 +65,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
   max-width: 980px;
   margin: 0 auto;
@@ -94,25 +95,6 @@ h2 {
   color: #000;
   border-color: #000;
   box-shadow: 3px 3px 0px #ff0055;
-}
-
-.youtube {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: auto;
-  padding: 0.3rem 0.7rem;
-  background: #fff;
-  color: #000;
-  font-weight: bold;
-  text-decoration: none;
-  border: 2px solid #000;
-  box-shadow: 3px 3px 0px #ff0055;
-  font-size: 0.8rem;
-}
-
-.youtube:hover {
-  background: #ffeb3b;
 }
 
 .page {
@@ -224,67 +206,127 @@ h2 {
   box-shadow: 2px 2px 0px #ff0055;
 }
 
-.member {
-  padding: 0.9rem 0;
-  border-bottom: 2px dotted rgba(169, 179, 240, 0.35);
+/* ---------- Credits Section ---------- */
+.credit-card {
+  position: relative;
+  margin-bottom: 1.75rem;
+  padding: 1.25rem 1.4rem;
+  background: rgba(5, 8, 40, 0.92);
+  border: 3px solid #6d7bd6;
+  box-shadow: 5px 5px 0px #ff0055;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.member:first-child {
-  padding-top: 0;
+.credit-card:nth-child(even) {
+  border-color: #00ffff;
+  box-shadow: 5px 5px 0px #6d7bd6;
 }
 
-.member:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+.credit-card:hover {
+  transform: scale(1.01);
+  box-shadow: 7px 7px 0px #ffffff;
 }
 
-.member-head {
+.credit-header {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.credit-avatar {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border: 2px solid #ffcc00;
+  box-shadow: 3px 3px 0px #00ffff;
+  image-rendering: pixelated;
+  background: #000;
+  flex-shrink: 0;
+}
+
+.credit-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.credit-name {
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 1.25rem;
   letter-spacing: 1px;
 }
 
-.member-name {
-  color: #ffcc00;
-  font-weight: bold;
-  font-size: 1.15rem;
-}
-
-.member-role {
+.credit-role {
   color: #a9b3f0;
-  font-size: 0.8rem;
-  text-align: right;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.member blockquote {
-  margin: 0.5rem 0 0;
+.credit-card blockquote {
+  margin: 0.8rem 0;
   padding-left: 0.75rem;
   border-left: 3px solid #ff0055;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.5;
   letter-spacing: 1px;
   color: #e6e9ff;
 }
 
-.member-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.6rem;
+/* Estilos para el quote en formato de imagen */
+.credit-quote-container {
+  margin: 0.9rem 0;
+  text-align: center;
 }
 
-.member-links a {
+.credit-quote-img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #ffcc00;
+  box-shadow: 3px 3px 0px #00ffff;
+  image-rendering: pixelated;
+  display: block;
+  margin: 0 auto;
+}
+
+.credit-quote-sub {
+  display: block;
+  margin-top: 0.4rem;
   font-size: 0.75rem;
+  color: #a9b3f0;
   letter-spacing: 1px;
-  padding: 0.2rem 0.55rem;
+}
+
+.credit-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.credit-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 0.3rem 0.7rem;
   color: #00ffff;
   text-decoration: none;
   border: 2px solid #00ffff;
+  box-shadow: 2px 2px 0px #6d7bd6;
+  transition: background 0.1s ease, color 0.1s ease;
 }
 
-.member-links a:hover {
+.credit-link-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.credit-link-btn:hover {
   background: #00ffff;
   color: #000;
 }
@@ -433,10 +475,6 @@ h2 {
     font-size: 0.8rem;
     letter-spacing: 1px;
     padding: 0.4rem 0.6rem;
-  }
-
-  .youtube {
-    margin-left: 0;
   }
 
   .page {
