@@ -1,11 +1,34 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbxctk6OTPu1UGwoyQWWR_llHHvgZFRV34lvvPZINYTf1rYwPyyL6zE1ScOsY2neIevH/exec";
 const SCALE = 3;
 const BG_SCROLL_FACTOR = 0.4;
+const BG_AUTO_SPEED = 0.3; 
 const PAGES = ["home", "downloads", "credits", "devlogs"];
 
-// ============================================================
-//  CONFIGURACIÓN DE COLORES POR AUTOR (Bordes y Fondo del Devlog)
-// ============================================================
+const clickSound = new Audio("content/sounds/smw_map_move_to_spot.wav");
+clickSound.volume = 0.4;
+
+document.addEventListener("click", (e) => {
+  const target = e.target.closest("a, button, .tab, .big-btn, .dl-btn, .filter-btn, .credit-link-btn, .logo");
+  if (target) {
+    clickSound.currentTime = 0;
+    clickSound.play().catch((error) => {
+      console.log("Audio play prevented:", error);
+    });
+  }
+});
+
+window.addEventListener('wheel', function (e) {
+  if (e.ctrlKey) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+window.addEventListener('keydown', function (e) {
+  if (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '_' || e.key === '0')) {
+    e.preventDefault();
+  }
+});
+
 const AUTHOR_COLORS = {
   "xagst3er": "#0000FF",
   "bastixtroller123": "#FFC300",
@@ -13,7 +36,123 @@ const AUTHOR_COLORS = {
 };
 const DEFAULT_AUTHOR_COLOR = "#ffcc00";
 
-/* ---------- Función auxiliar para convertir Hex a RGBA (con opacidad sutil 0.15) ---------- */
+let isDragging = false;
+let userInteractedWithLogo = false; 
+let dragStartX = 0;
+let currentLogoOffset = 0;
+
+function getMaxDragRange() {
+  return Math.min(window.innerWidth / 2.5, 400);
+}
+
+function getSunTimes(date, lat) {
+  const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  const declination = 23.45 * Math.sin((360 * (284 + dayOfYear) / 365) * (Math.PI / 180));
+  
+  let sunsetHour = 19 - (lat * declination / 400); 
+  let sunriseHour = 6 + (lat * declination / 400);
+
+  if (isNaN(sunsetHour) || sunsetHour < 17) sunsetHour = 19.5; 
+  if (isNaN(sunriseHour) || sunriseHour > 8) sunriseHour = 6.0;  
+
+  return { sunrise: sunriseHour, sunset: sunsetHour };
+}
+
+function calculateTimeOpacity() {
+  const now = new Date();
+  const currentHours = now.getHours() + (now.getMinutes() / 60) + (now.getSeconds() / 3600);
+  let userLat = 25.0; 
+  const sunTimes = getSunTimes(now, userLat);
+  const twilightDuration = 1.5; 
+
+  const sunsetStart = sunTimes.sunset - twilightDuration;
+  const sunsetEnd = sunTimes.sunset + 0.5;
+  const sunriseStart = sunTimes.sunrise - 0.5;
+  const sunriseEnd = sunTimes.sunrise + twilightDuration;
+
+  let opacity = 0;
+  if (currentHours >= sunsetStart && currentHours <= sunsetEnd) {
+    opacity = (currentHours - sunsetStart) / (sunsetEnd - sunsetStart);
+  } else if (currentHours > sunsetEnd || currentHours < sunriseStart) {
+    opacity = 1;
+  } else if (currentHours >= sunriseStart && currentHours <= sunriseEnd) {
+    opacity = 1 - ((currentHours - sunriseStart) / (sunriseEnd - sunriseStart));
+  } else {
+    opacity = 0;
+  }
+  return Math.max(0, Math.min(1, opacity));
+}
+
+function updateDayNightCycle() {
+  if (isDragging || userInteractedWithLogo) return; 
+
+  const opacity = calculateTimeOpacity();
+  document.documentElement.style.setProperty("--night-opacity", opacity.toFixed(3));
+
+  const maxRange = getMaxDragRange();
+  currentLogoOffset = (opacity - 0.5) * (maxRange * 2);
+  applyLogoTransform();
+}
+
+function applyLogoTransform() {
+  const logoEl = document.getElementById("draggable-logo");
+  if (logoEl) {
+    logoEl.style.transform = `translateX(${currentLogoOffset}px)`;
+  }
+}
+
+function setupLogoSlider() {
+  const logoEl = document.getElementById("draggable-logo");
+  if (!logoEl) return;
+
+  function startDrag(clientX) {
+    isDragging = true;
+    userInteractedWithLogo = true; 
+    dragStartX = clientX - currentLogoOffset;
+    logoEl.style.transition = "none";
+  }
+
+  function onDrag(clientX) {
+    if (!isDragging) return;
+    let newOffset = clientX - dragStartX;
+    const maxRange = getMaxDragRange();
+    
+    currentLogoOffset = Math.max(-maxRange, Math.min(maxRange, newOffset));
+    applyLogoTransform();
+
+    const normalizedOpacity = (currentLogoOffset + maxRange) / (maxRange * 2);
+    document.documentElement.style.setProperty("--night-opacity", Math.max(0, Math.min(1, normalizedOpacity)).toFixed(3));
+  }
+
+  function endDrag() {
+    if (!isDragging) return;
+    isDragging = false;
+    logoEl.style.transition = "transform 0.1s ease-out";
+  }
+
+  logoEl.addEventListener("mousedown", (e) => {
+    startDrag(e.clientX);
+    e.preventDefault();
+  });
+  window.addEventListener("mousemove", (e) => onDrag(e.clientX));
+  window.addEventListener("mouseup", endDrag);
+
+  logoEl.addEventListener("touchstart", (e) => {
+    if (e.touches.length === 1) {
+      startDrag(e.touches[0].clientX);
+    }
+  });
+  window.addEventListener("touchmove", (e) => {
+    if (e.touches.length === 1) {
+      onDrag(e.touches[0].clientX);
+    }
+  });
+  window.addEventListener("touchend", endDrag);
+}
+
+updateDayNightCycle();
+setInterval(updateDayNightCycle, 30000);
+
 function hexToRgba(hex, alpha = 0.15) {
   let cleanHex = hex.replace('#', '');
   if (cleanHex.length === 3) {
@@ -26,15 +165,20 @@ function hexToRgba(hex, alpha = 0.15) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-/* ---------- Logo y fondo pixelados ---------- */
 const logo = document.querySelector(".logo");
 function scaleLogo() {
-  logo.style.width = logo.naturalWidth * SCALE + "px";
+  if (logo && logo.naturalWidth) {
+    logo.style.width = logo.naturalWidth * SCALE + "px";
+  }
 }
-if (logo.complete && logo.naturalWidth) {
+if (logo && logo.complete && logo.naturalWidth) {
   scaleLogo();
-} else {
-  logo.addEventListener("load", scaleLogo);
+  setupLogoSlider();
+} else if (logo) {
+  logo.addEventListener("load", () => {
+    scaleLogo();
+    setupLogoSlider();
+  });
 }
 
 const bg = new Image();
@@ -44,28 +188,30 @@ bg.onload = () => {
     bg.naturalWidth * SCALE + "px " + bg.naturalHeight * SCALE + "px"
   );
 };
-bg.src = "content/background.gif";
+bg.src = "content/background.png";
 
-/* ---------- Parallax del fondo ---------- */
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let bgTicking = false;
+let bgX = 0;
+let lastScrollY = window.scrollY;
 
 function updateBg() {
-  const y = reduceMotion.matches ? 0 : Math.round(-window.scrollY * BG_SCROLL_FACTOR);
-  document.documentElement.style.setProperty("--bg-y", y + "px");
-  bgTicking = false;
+  const scrollY = window.scrollY;
+  lastScrollY = scrollY;
+
+  if (!reduceMotion.matches) {
+    bgX -= BG_AUTO_SPEED; 
+  }
+
+  const bgY = reduceMotion.matches ? 0 : Math.round(-scrollY * BG_SCROLL_FACTOR);
+
+  document.documentElement.style.setProperty("--bg-x", bgX + "px");
+  document.documentElement.style.setProperty("--bg-y", bgY + "px");
+
+  requestAnimationFrame(updateBg);
 }
 
-window.addEventListener("scroll", () => {
-  if (!bgTicking) {
-    bgTicking = true;
-    requestAnimationFrame(updateBg);
-  }
-}, { passive: true });
+requestAnimationFrame(updateBg);
 
-updateBg();
-
-/* ---------- Utilidades ---------- */
 function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, c =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -87,7 +233,6 @@ function getYouTubeEmbedUrl(url) {
   return videoId ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}` : "";
 }
 
-/* ---------- Navegación entre secciones ---------- */
 function currentPage() {
   const h = location.hash.replace("#", "");
   return PAGES.includes(h) ? h : "home";
@@ -113,7 +258,6 @@ function showPage(name, scrollToNav) {
 
 window.addEventListener("hashchange", () => showPage(currentPage(), true));
 
-/* ---------- Home ---------- */
 function renderHome() {
   const el = document.getElementById("sec-home");
   if (!el || typeof MOD_INFO === "undefined") return;
@@ -134,7 +278,6 @@ function renderHome() {
   `;
 }
 
-/* ---------- Downloads ---------- */
 function renderDownloads() {
   const el = document.getElementById("sec-downloads");
   if (!el || typeof MOD_INFO === "undefined") return;
@@ -153,7 +296,6 @@ function renderDownloads() {
   `;
 }
 
-/* ---------- Credits (Soporta imagen de quote y subtexto) ---------- */
 function renderCredits() {
   const el = document.getElementById("sec-credits");
   if (!el || typeof MOD_INFO === "undefined") return;
@@ -180,7 +322,6 @@ function renderCredits() {
       ? `<img class="credit-avatar" src="${esc(safeUrl(m.avatar))}" alt="${esc(m.name)}">` 
       : `<div class="credit-avatar" style="display:flex;align-items:center;justify-content:center;color:#ffcc00;font-weight:bold;">?</div>`;
 
-    // Renderizar quote como imagen (si existe quoteImage) o como texto plano
     let quoteHTML = "";
     if (m.quoteImage) {
       quoteHTML = `
@@ -213,7 +354,6 @@ function renderCredits() {
   `;
 }
 
-/* ---------- Devlogs & Categorías ---------- */
 function cleanTitle(t) {
   return String(t ?? "").replace(/^\s*devlog\s*#?\d+\s*[:.\-–—]?\s*/i, "").trim();
 }
@@ -267,7 +407,7 @@ function displayDevlogs() {
     return;
   }
 
-  filtered.forEach((log, index) => {
+  filtered.forEach((log) => {
     const article = document.createElement("article");
     article.className = "post";
 

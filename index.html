@@ -2,18 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Mario’s Theater Of Wonder</title>
-  <link rel="stylesheet" href="style.css?v=5">
-  <link rel="icon" type="image/png" href="content/websiteICON.png?v=5">
+  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="icon" type="image/png" href="content/websiteICON.png?v=9">
+  <link rel="preload" as="image" href="content/background.gif">
 </head>
 <body>
 
-  <header>
-    <img class="logo" src="content/mtow_logo.png" alt="Mario’s Theater Of Wonder">
+  <div class="side-banner-left"></div>
+  <div class="side-banner-right"></div>
+
+  <header class="slider-header">
+    <div class="slider-track">
+      <img class="logo" id="draggable-logo" src="content/mtow_logo.png" alt="Mario’s Theater Of Wonder">
+    </div>
   </header>
 
-  <!-- Barra superior (Sin el botón de YouTube) -->
   <nav class="topnav" id="topnav" aria-label="Main">
     <div class="topnav-inner">
       <a class="tab" href="#home" data-page="home">Home</a>
@@ -25,20 +30,16 @@
 
   <main class="page">
     <section class="page-section" id="sec-home" data-page="home"></section>
-
     <section class="page-section" id="sec-downloads" data-page="downloads" hidden></section>
-
     <section class="page-section" id="sec-credits" data-page="credits" hidden></section>
-
     <section class="page-section" id="sec-devlogs" data-page="devlogs" hidden>
       <h2>Devlog Showcase</h2>
-      <!-- Filtros por autor -->
       <div id="devlog-filters" class="devlog-filters"></div>
       <div id="devlogs-container"></div>
     </section>
   </main>
 
-  <script src="modinfo.js?v=5"></script>
-  <script src="script.js?v=5"></script>
+  <script src="modinfo.js?v=9"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

@@ -1,6 +1,3 @@
-// ============================================================
-//  Información del mod - edita solo este archivo
-// ============================================================
 const MOD_INFO = {
   about: [
     "Mario's Theater of Wonder is a project focused around a variety of mario media, Created and directed by Xaggy and Co-created by SUNNIDAIZE"
