@@ -1,0 +1,41 @@
+/* Pagina Home: botones grandes (CTA) */
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.big-btn {
+  display: inline-block;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.8rem 1.5rem;
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0px #ff0055;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.big-btn.alt {
+  background: #00ffff;
+  box-shadow: 5px 5px 0px #6d7bd6;
+}
+
+.big-btn:hover {
+  background: #ffeb3b;
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0px #ff0055;
+}
+
+.big-btn.alt:hover {
+  background: #7dffff;
+  box-shadow: 3px 3px 0px #6d7bd6;
+}

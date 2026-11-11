@@ -1,0 +1,157 @@
+/* Layout: header con logo, barra de navegacion, contenedor de paginas y cajas de info */
+
+.slider-header {
+  position: relative;
+  width: 100vw;
+  padding: 3rem 0 1.5rem;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: linear-gradient(
+    to bottom,
+rgba(0, 0, 20, 0.95) 0%,
+rgba(0, 0, 20, 0.95) 4%,
+rgba(0, 0, 20, 0.90) 4%,
+rgba(0, 0, 20, 0.90) 8%,
+rgba(0, 0, 20, 0.85) 8%,
+rgba(0, 0, 20, 0.85) 12%,
+rgba(0, 0, 20, 0.80) 12%,
+rgba(0, 0, 20, 0.80) 16%,
+rgba(0, 0, 20, 0.75) 16%,
+rgba(0, 0, 20, 0.75) 20%,
+rgba(0, 0, 20, 0.70) 20%,
+rgba(0, 0, 20, 0.70) 24%,
+rgba(0, 0, 20, 0.65) 24%,
+rgba(0, 0, 20, 0.65) 28%,
+rgba(0, 0, 20, 0.60) 28%,
+rgba(0, 0, 20, 0.60) 32%,
+rgba(0, 0, 20, 0.55) 32%,
+rgba(0, 0, 20, 0.55) 36%,
+rgba(0, 0, 20, 0.50) 36%,
+rgba(0, 0, 20, 0.50) 40%,
+rgba(0, 0, 20, 0.45) 40%,
+rgba(0, 0, 20, 0.45) 44%,
+rgba(0, 0, 20, 0.40) 44%,
+rgba(0, 0, 20, 0.40) 48%,
+rgba(0, 0, 20, 0.35) 48%,
+rgba(0, 0, 20, 0.35) 52%,
+rgba(0, 0, 20, 0.30) 52%,
+rgba(0, 0, 20, 0.30) 56%,
+rgba(0, 0, 20, 0.25) 56%,
+rgba(0, 0, 20, 0.25) 60%,
+rgba(0, 0, 20, 0.20) 60%,
+rgba(0, 0, 20, 0.20) 64%,
+rgba(0, 0, 20, 0.15) 64%,
+rgba(0, 0, 20, 0.15) 68%,
+rgba(0, 0, 20, 0.10) 68%,
+rgba(0, 0, 20, 0.10) 72%,
+rgba(0, 0, 20, 0.05) 72%,
+rgba(0, 0, 20, 0.05) 76%,
+rgba(0, 0, 20, 0.00) 76%,
+rgba(0, 0, 20, 0.00) 100%
+  );
+}
+
+.slider-track {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  max-width: 80%;
+  height: auto;
+  image-rendering: pixelated;
+  position: relative;
+  touch-action: none;
+  will-change: transform;
+}
+
+.logo:active {
+  cursor: url('../assets/images/ui/cursor.png'), grabbing !important;
+}
+
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(5, 8, 40, 0.96);
+  border-top: 3px solid #6d7bd6;
+  border-bottom: 3px solid #6d7bd6;
+  box-shadow: 0 4px 0 #ff0055;
+}
+
+.topnav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+}
+
+.tab {
+  font-family: inherit;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.45rem 0.9rem;
+  color: #a9b3f0;
+  background: transparent;
+  border: 3px solid #6d7bd6;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.tab:hover {
+  color: #fff;
+  border-color: #ffcc00;
+}
+
+.tab.active {
+  background: #ffcc00;
+  color: #000;
+  border-color: #000;
+  box-shadow: 3px 3px 0px #ff0055;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.page-section[hidden] {
+  display: none;
+}
+
+.info-box {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.3rem;
+  background: rgba(5, 8, 40, 0.92);
+  border: 3px solid #6d7bd6;
+  box-shadow: 5px 5px 0px #ff0055;
+}
+
+.info-box h4 {
+  margin: 0 0 0.6rem;
+  font-size: 1.2rem;
+  color: #ffeb3b;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.info-box p {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}

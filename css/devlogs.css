@@ -1,0 +1,160 @@
+/* Pagina Devlogs: filtros, posts y videos */
+
+.devlog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  font-family: inherit;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  color: #a9b3f0;
+  background: rgba(5, 8, 40, 0.92);
+  border: 2px solid #6d7bd6;
+  box-shadow: 3px 3px 0px #ff0055;
+  transition: all 0.1s ease;
+}
+
+.filter-btn:hover {
+  color: #fff;
+  border-color: #ffcc00;
+}
+
+.filter-btn.active {
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border-color: #000;
+  box-shadow: 3px 3px 0px #00ffff;
+}
+
+.post {
+  position: relative;
+  margin-bottom: 1.75rem;
+  padding: 1.1rem 1.3rem;
+  background: rgba(5, 8, 40, 0.92);
+  border: 3px dashed #ffcc00;
+  box-shadow: 5px 5px 0px #ff0055;
+  transform: rotate(-0.4deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post:nth-child(even) {
+  transform: rotate(0.5deg);
+  border-color: #00ffff;
+  box-shadow: 5px 5px 0px #6d7bd6;
+}
+
+.post:hover {
+  transform: scale(1.01) rotate(0deg);
+  box-shadow: 7px 7px 0px #ffffff;
+}
+
+.post h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+  color: #ffeb3b;
+  letter-spacing: 1px;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.8rem;
+}
+
+.post time {
+  color: #a9b3f0;
+}
+
+.post-author {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+.post-media-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.post-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 3px solid #ffcc00;
+  box-shadow: 4px 4px 0px #00ffff;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  margin: 1rem 0;
+  border: 3px solid #6d7bd6;
+  box-shadow: 4px 4px 0px #ff0055;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.post p {
+  white-space: pre-line; /* respeta los saltos de linea del documento */
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  letter-spacing: 1px;
+}
+
+.post p:last-child {
+  margin-bottom: 0;
+}
+
+/* linea en blanco del documento */
+.post-gap {
+  height: 0.9rem;
+}
+
+/* elementos de lista del documento */
+.post p.post-li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.post p.post-li::before {
+  content: "-";
+  position: absolute;
+  left: 0.3rem;
+}
+
+.devlog-sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.section-btn {
+  font-size: 1rem;
+  padding: 0.5rem 1.1rem;
+  border-width: 3px;
+}

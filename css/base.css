@@ -1,0 +1,90 @@
+/* Base: fuente, cursor, fondo animado, arboles laterales y titulos */
+
+@font-face {
+  font-family: 'SuperMarioWorld';
+  src: url('../assets/fonts/Super-Mario-World.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body, a, button, input, select, textarea, .logo, .tab, .filter-btn, .big-btn, .dl-btn, .credit-link-btn {
+  cursor: url('../assets/images/ui/cursor.png'), auto !important;
+}
+
+html {
+  background-color: #070b3d;
+  touch-action: pan-x pan-y;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  overscroll-behavior-y: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'SuperMarioWorld', Arial, Helvetica, sans-serif;
+  color: #fff;
+  image-rendering: pixelated;
+  overscroll-behavior-y: none;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background: url("../assets/images/backgrounds/background.png") repeat;
+  background-size: var(--bg-size, auto);
+  background-position: var(--bg-x, 0px) var(--bg-y, 0px);
+  image-rendering: pixelated;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: url("../assets/images/backgrounds/background.gif") repeat;
+  background-size: var(--bg-size, auto);
+  background-position: var(--bg-x, 0px) var(--bg-y, 0px);
+  image-rendering: pixelated;
+  opacity: var(--night-opacity, 0);
+  transition: opacity 0.5s ease-in-out;
+}
+
+.side-banner-left,
+.side-banner-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 96px;
+  z-index: 9999;
+  pointer-events: none;
+  background: url("../assets/images/backgrounds/tree.png") repeat-y;
+  background-size: 96px auto;
+  image-rendering: pixelated;
+}
+
+.side-banner-left {
+  left: 0;
+}
+
+.side-banner-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+h2 {
+  margin: 0 0 1.25rem;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #ffeb3b;
+  text-shadow: 3px 3px #ff0055;
+  letter-spacing: 2px;
+}

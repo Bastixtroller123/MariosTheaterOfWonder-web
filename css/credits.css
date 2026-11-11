@@ -1,0 +1,124 @@
+/* Pagina Credits: tarjetas de creditos */
+
+.credit-card {
+  position: relative;
+  margin-bottom: 1.75rem;
+  padding: 1.25rem 1.4rem;
+  background: rgba(5, 8, 40, 0.92);
+  border: 3px solid #6d7bd6;
+  box-shadow: 5px 5px 0px #ff0055;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.credit-card:nth-child(even) {
+  border-color: #00ffff;
+  box-shadow: 5px 5px 0px #6d7bd6;
+}
+
+.credit-card:hover {
+  transform: scale(1.01);
+  box-shadow: 7px 7px 0px #ffffff;
+}
+
+.credit-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.credit-avatar {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border: 2px solid #ffcc00;
+  box-shadow: 3px 3px 0px #00ffff;
+  image-rendering: pixelated;
+  background: #000;
+  flex-shrink: 0;
+}
+
+.credit-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.credit-name {
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+}
+
+.credit-role {
+  color: #a9b3f0;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.credit-card blockquote {
+  margin: 0.8rem 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid #ff0055;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: #e6e9ff;
+}
+
+.credit-quote-container {
+  margin: 0.9rem 0;
+  text-align: center;
+}
+
+.credit-quote-img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #ffcc00;
+  box-shadow: 3px 3px 0px #00ffff;
+  image-rendering: pixelated;
+  display: block;
+  margin: 0 auto;
+}
+
+.credit-quote-sub {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: #a9b3f0;
+  letter-spacing: 1px;
+}
+
+.credit-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.credit-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 0.3rem 0.7rem;
+  color: #00ffff;
+  text-decoration: none;
+  border: 2px solid #00ffff;
+  box-shadow: 2px 2px 0px #6d7bd6;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.credit-link-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.credit-link-btn:hover {
+  background: #00ffff;
+  color: #000;
+}

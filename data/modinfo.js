@@ -14,7 +14,7 @@ const MOD_INFO = {
       name: "Xagst3er",
       role: "Director",
       quote: "stay hard son",
-      avatar: "content/xag_icon.png",
+      avatar: "assets/images/credits/xag_icon.png",
       links: [
         { label: "YouTube", url: "https://www.youtube.com/@xaggy726" }
       ]
@@ -23,7 +23,7 @@ const MOD_INFO = {
       name: "Bastixtroller123",
       role: "Lead Coder",
       quote: "Hey guys it's me verity, I mean Bastixtroller123",
-      avatar: "content/credits/bastix.png",
+      avatar: "assets/images/credits/bastix.png",
       links: [
         { label: "YouTube", url: "https://youtube.com/@bastixtroller123" },
         { label: "Twitter/X", url: "https://x.com/Bastixtroller12" }
@@ -32,9 +32,9 @@ const MOD_INFO = {
     {
       name: "sunnidaize_official",
       role: "Project Manager - Lead Artist",
-      quoteImage: "content/credits/dead.jpg",
+      quoteImage: "assets/images/credits/dead.jpg",
       quoteSubtext: "credits to Arda for the drawing",
-      avatar: "content/credits/sunni.png",
+      avatar: "assets/images/credits/sunni.png",
       links: [
         { label: "YouTube", url: "https://www.youtube.com/@Sunnidaize_Official" },
         { label: "Twitter/X", url: "https://x.com/SUNNIDAIZELING" }

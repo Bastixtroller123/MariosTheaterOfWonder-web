@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Mario’s Theater Of Wonder</title>
-  <link rel="stylesheet" href="style.css?v=9">
-  <link rel="icon" type="image/png" href="content/websiteICON.png?v=9">
-  <link rel="preload" as="image" href="content/background.gif">
+  <link rel="stylesheet" href="css/base.css?v=10">
+  <link rel="stylesheet" href="css/layout.css?v=10">
+  <link rel="stylesheet" href="css/home.css?v=10">
+  <link rel="stylesheet" href="css/downloads.css?v=10">
+  <link rel="stylesheet" href="css/credits.css?v=10">
+  <link rel="stylesheet" href="css/devlogs.css?v=10">
+  <link rel="stylesheet" href="css/responsive.css?v=10">
+  <link rel="icon" type="image/png" href="assets/images/branding/websiteICON.png?v=10">
+  <link rel="preload" as="image" href="assets/images/backgrounds/background.gif">
 </head>
 <body>
 
@@ -15,7 +21,7 @@
 
   <header class="slider-header">
     <div class="slider-track">
-      <img class="logo" id="draggable-logo" src="content/mtow_logo.png" alt="Mario’s Theater Of Wonder">
+      <img class="logo" id="draggable-logo" src="assets/images/branding/mtow_logo.png" alt="Mario’s Theater Of Wonder">
     </div>
   </header>
 
@@ -34,12 +40,23 @@
     <section class="page-section" id="sec-credits" data-page="credits" hidden></section>
     <section class="page-section" id="sec-devlogs" data-page="devlogs" hidden>
       <h2>Devlog Showcase</h2>
+      <div id="devlog-sections" class="devlog-sections"></div>
       <div id="devlog-filters" class="devlog-filters"></div>
       <div id="devlogs-container"></div>
     </section>
   </main>
 
-  <script src="modinfo.js?v=9"></script>
-  <script src="script.js?v=9"></script>
+  <script src="data/modinfo.js?v=10"></script>
+  <script src="js/config.js?v=10"></script>
+  <script src="js/utils.js?v=10"></script>
+  <script src="js/interactions.js?v=10"></script>
+  <script src="js/day-night.js?v=10"></script>
+  <script src="js/background.js?v=10"></script>
+  <script src="js/router.js?v=10"></script>
+  <script src="js/pages/home.js?v=10"></script>
+  <script src="js/pages/downloads.js?v=10"></script>
+  <script src="js/pages/credits.js?v=10"></script>
+  <script src="js/pages/devlogs.js?v=10"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>
